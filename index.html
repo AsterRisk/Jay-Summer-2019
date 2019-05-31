@@ -1,0 +1,46 @@
+<?php
+    session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    
+<form method="post" action="/welcome.php">
+  <pre>Name: <input type="text" name="fname"></pre>
+  <pre>ID:    <input type = "text" name = "pID"> </pre> 
+    Clock Time: <div id = "updatetime"></div> 
+  <input type="submit">
+</form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // collect value of input field
+        $name = htmlspecialchars($_REQUEST['fname']); 
+        $ID = htmlspecialchars($_REQUEST['pID']); 
+        $day = date("D");
+        $date = date("j");
+        $month = date("M");
+        $year = date("Y");
+      	$hour = date("H");
+      	$minute = date("i");
+        $clockTime = $day."  ".  $month." ". $date.", ". $year .", ". $hour.":". $minute;
+        if (empty($name)) {
+            echo "Name is empty";
+        } else {
+            echo $name;
+        }
+    }
+    ?>
+    
+    <script>
+        var d = new Date();
+        setInterval(function(){
+            document.getElementById("updatetime").innerHTML = (new Date()).toLocaleTimeString();
+        }, 1000);
+    </script>
+
+    
+</body>
+</html>
