@@ -1,5 +1,5 @@
 <?php
-	public class Employee
+	class Employee
 	{
 		Employee($nm, long $IDNo, $picFile, $QRC)
 		{
